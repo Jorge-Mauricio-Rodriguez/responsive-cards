@@ -5,6 +5,10 @@
   --tablet-to-mobile: ((100vw - 680px) / 154); /* from 834 to 680 */
 }
 
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
 }
