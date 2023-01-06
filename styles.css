@@ -1,0 +1,59 @@
+:root {
+  /* Para las formulas con clamp */
+  --desktop-to-laptop: ((100vw - 1024px) / 416); /* from 1440 to 1024 */
+  --laptop-to-tablet: ((100vw - 834px) / 187); /* from 1024 to 834 */
+  --tablet-to-mobile: ((100vw - 680px) / 154); /* from 834 to 680 */
+}
+
+html, body {
+  margin: 0;
+}
+
+body {
+  background: tomato;
+}
+
+header {
+  text-align: center;
+  max-width: 1024px;
+  padding: 0 20px;
+  margin: 0 auto 50px;
+}
+
+div {
+  background: rgb(255 142 122);
+}
+
+ul {
+  --items: 5;
+  --gaps: calc( var(--items) - 1 );
+  --gap: clamp(15px, calc(15px + (30 - 15) * var(--desktop-to-laptop)), 30px);
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0 clamp(40px, calc(40px + (120 - 40) * var(--desktop-to-laptop)), 120px);
+  max-width: 1200px;
+  background: rgb(233 89 89);
+}
+
+
+li {
+  width: calc(20% - ( ( var(--gaps) * var(--gap) ) / 5 ) );
+  flex-shrink: 0;
+  height: 150px;
+  background: rgb(169, 58, 58);
+  margin-right: var(--gap);
+  text-align: center;
+  line-height: 150px;
+}
+
+li:last-child {
+  margin-right: 0;
+}
+
+@media (min-width: 1440px) {
+  ul {
+    margin: 0 auto;
+  }
+}
